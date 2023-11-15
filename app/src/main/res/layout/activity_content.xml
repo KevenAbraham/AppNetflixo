@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Logo e botão de sair -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo"/>
+
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sair"
+                android:background="@color/red"
+                android:textColor="@color/white"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <!-- Card grande -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/largeImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/card_image"
+                android:scaleType="centerCrop"/>
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/largeImage"
+                android:text="Novo lançamento"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:padding="8dp"/>
+
+            <!-- Botão -->
+            <Button
+                android:id="@+id/checkButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Conferir"
+                android:textColor="@color/white"
+                android:background="@color/red"
+                android:layout_below="@id/titleTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"/>
+        </RelativeLayout>
+
+        <!-- Seis cards menores em duas linhas -->
+        <!-- Card 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Primeira linha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <!-- Card 1 -->
+                <ImageView
+                    android:id="@+id/smallImage1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/small_card1"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="8dp"/>
+
+                <!-- Espaço entre os cards -->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0" />
+
+                <!-- Card 2 -->
+                <ImageView
+                    android:id="@+id/smallImage2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/small_card2"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="8dp"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <!-- Segunda linha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <!-- Card 3 -->
+                <ImageView
+                    android:id="@+id/smallImage3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/small_card3"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="8dp"/>
+
+                <!-- Espaço entre os cards -->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0" />
+
+                <!-- Card 4 -->
+                <ImageView
+                    android:id="@+id/smallImage4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/small_card4"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="8dp"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <!-- Terceira linha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <!-- Card 5 -->
+                <ImageView
+                    android:id="@+id/smallImage5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/small_card5"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="8dp"/>
+
+                <!-- Espaço entre os cards -->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0" />
+
+                <!-- Card 6 -->
+                <ImageView
+                    android:id="@+id/smallImage6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/small_card6"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="8dp"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

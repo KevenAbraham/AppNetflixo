@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="enterButton" type="id" />
+    <item name="descriptionTextView" type="id" />
+    <item name="titleTextView" type="id" />
+    <item name="logoImageView" type="id" />
+    <item name="signUpPromptTextView" type="id" />
+    <item name="signUpButton" type="id" />
+    <item name="emailEditText" type="id" />
+    <item name="passwordEditText" type="id" />
+    <item name="loginButton" type="id" />
+    <item name="nameEditText" type="id" />
+</resources>

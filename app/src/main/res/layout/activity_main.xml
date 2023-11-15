@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:background="@drawable/background"
+    android:paddingBottom="16dp">
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Veja o que há de novo!"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Assista quando quiser, cancele quando quiser"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/enterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrar"
+        android:background="@color/red"
+        android:textColor="@color/white"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/signUpPromptTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Não perca tempo e crie sua conta agora"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:text="Criar conta agora"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>
