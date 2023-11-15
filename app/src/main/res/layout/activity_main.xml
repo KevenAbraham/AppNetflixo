@@ -24,7 +24,7 @@
         android:text="Veja o que há de novo!"
         android:textColor="@color/white"
         android:textSize="24sp"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="100dp"/>
 
     <TextView
         android:id="@+id/descriptionTextView"
@@ -60,6 +60,7 @@
         android:textColor="@color/white"
         android:background="@color/red"
         android:text="Criar conta agora"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="150dp"/>
 
 </LinearLayout>
