@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun entrarCadastro() {
-        val intent = Intent(this, LoginActivity::class.java)
+        val intent = Intent(this, CadastrarActivity::class.java)
         startActivity(intent)
         finish()
     }
