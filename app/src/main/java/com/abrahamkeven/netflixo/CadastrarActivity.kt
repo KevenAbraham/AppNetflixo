@@ -44,6 +44,11 @@ class CadastrarActivity : AppCompatActivity() {
         val confirmPassword = confirmPasswordEditText.text.toString().trim()
         val name = nameEditText.text.toString().trim()
 
+        if (name.length <= 1) {
+            Toast.makeText(this, "Digite um nome válido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Insira um email válido", Toast.LENGTH_SHORT).show()
             return false
@@ -59,10 +64,7 @@ class CadastrarActivity : AppCompatActivity() {
             return false
         }
 
-        if (name.length <= 1) {
-            Toast.makeText(this, "Digite um nome válido", Toast.LENGTH_SHORT).show()
-            return false
-        }
+
 
         val firstName = name.split(" ")[0] //armazenando o primeiro nome do usuário na variável
         Toast.makeText(this, "Primeiro nome: $firstName", Toast.LENGTH_SHORT).show()
