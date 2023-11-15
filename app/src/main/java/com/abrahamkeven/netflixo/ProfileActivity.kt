@@ -2,6 +2,7 @@ package com.abrahamkeven.netflixo
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.abrahamkeven.netflixo.ui.theme.NetflixoTheme
@@ -15,6 +16,7 @@ class ProfileActivity : AppCompatActivity() {
         val card2 = findViewById<LinearLayout>(R.id.cardProfile2)
         val card3 = findViewById<LinearLayout>(R.id.cardProfile3)
         val card4 = findViewById<LinearLayout>(R.id.cardProfile4)
+        val logout = findViewById<Button>(R.id.logoutButton)
 
         card1.setOnClickListener {
             irParaContent()
@@ -31,10 +33,19 @@ class ProfileActivity : AppCompatActivity() {
         card4.setOnClickListener {
             irParaContent()
         }
+
+        logout.setOnClickListener {
+            irParaMain()
+        }
     }
 
     private fun irParaContent() {
         val intent = Intent(this, ContentActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+    private fun irParaMain() {
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
