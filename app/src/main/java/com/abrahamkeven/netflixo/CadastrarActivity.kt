@@ -19,6 +19,13 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//POSSÍVEIS ERROS:
+//DUPLA BARRA NA HORA DE PASSA A API
+//CRIAÇÃO DA API
+//REACT DANDO ERRO DE CRIAÇÃO POIS UM NOVO CAMPO FOI ADICIONADO
+//NAO ESTA CADASTRANDO OS DADOS AQUI NO KOTLIN
+//FALTA A CRIAÇÃO DOS LINKS
+
 class CadastrarActivity : AppCompatActivity() {
     private lateinit var nameEditText: EditText //nome
     private lateinit var emailEditText: EditText //email
@@ -39,7 +46,12 @@ class CadastrarActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener {
             if (validateCredentials()) {
-                irParaPerfil()
+                val name = nameEditText.text.toString().trim()
+                val email = emailEditText.text.toString().trim()
+                val password = passwordEditText.text.toString().trim()
+
+                val user = User(name, email, password)
+                registerUser(user)
             }
         }
 
@@ -84,19 +96,6 @@ class CadastrarActivity : AppCompatActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
-    }
-
-    private fun irParaPerfil() {
-        // Obtém os valores dos campos de entrada
-        val name = nameEditText.text.toString().trim()
-        val email = emailEditText.text.toString().trim()
-        val password = passwordEditText.text.toString().trim()
-
-        // Cria um objeto do usuário a ser cadastrado
-        val user = User(name, email, password)
-
-        // Faz a chamada para registrar o usuário
-        registerUser(user)
     }
 
     private fun registerUser(user: User) {
