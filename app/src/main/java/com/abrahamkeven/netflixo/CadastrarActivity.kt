@@ -1,6 +1,7 @@
 package com.abrahamkeven.netflixo
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
@@ -8,6 +9,15 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.abrahamkeven.netflixo.api.UserService
+import com.abrahamkeven.netflixo.model.User
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class CadastrarActivity : AppCompatActivity() {
     private lateinit var nameEditText: EditText //nome
@@ -64,10 +74,8 @@ class CadastrarActivity : AppCompatActivity() {
             return false
         }
 
-
-
-        val firstName = name.split(" ")[0] //armazenando o primeiro nome do usuário na variável
-        Toast.makeText(this, "Primeiro nome: $firstName", Toast.LENGTH_SHORT).show()
+        //val firstName = name.split(" ")[0] //armazenando o primeiro nome do usuário na variável
+        //Toast.makeText(this, "Primeiro nome: $firstName", Toast.LENGTH_SHORT).show()
 
         return true
     }
@@ -79,8 +87,61 @@ class CadastrarActivity : AppCompatActivity() {
     }
 
     private fun irParaPerfil() {
-        val intent = Intent(this, ProfileActivity::class.java)
-        startActivity(intent)
-        finish()
+        // Obtém os valores dos campos de entrada
+        val name = nameEditText.text.toString().trim()
+        val email = emailEditText.text.toString().trim()
+        val password = passwordEditText.text.toString().trim()
+
+        // Cria um objeto do usuário a ser cadastrado
+        val user = User(name, email, password)
+
+        // Faz a chamada para registrar o usuário
+        registerUser(user)
+    }
+
+    private fun registerUser(user: User) {
+        // Criar um objeto Retrofit
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://web-ek0w5pnhkp3k.up-de-fra1-1.apps.run-on-seenode.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        // Criar o serviço da API
+        val userService = retrofit.create(UserService::class.java)
+
+        // Fazer a chamada da API para registrar o usuário
+        val call = userService.createUser(user)
+
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    // Sucesso ao cadastrar o usuário
+                    Toast.makeText(
+                        this@CadastrarActivity,
+                        "Usuário cadastrado com sucesso",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    // Redirecione para a próxima tela ou realize alguma ação
+                    val intent = Intent(this@CadastrarActivity, ProfileActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    // Tratar erro na resposta do servidor
+                    Toast.makeText(
+                        this@CadastrarActivity,
+                        "Erro ao cadastrar o usuário",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    // Realize ações apropriadas para lidar com o erro
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                // Tratar falha na requisição
+                Toast.makeText(this@CadastrarActivity, "Falha na requisição", Toast.LENGTH_SHORT)
+                    .show()
+                // Realize ações apropriadas para lidar com a falha
+            }
+        })
     }
 }
