@@ -20,11 +20,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//POSSÍVEIS ERROS:
-//DUPLA BARRA NA HORA DE PASSA A API
-//CRIAÇÃO DA API
-//REACT DANDO ERRO DE CRIAÇÃO POIS UM NOVO CAMPO FOI ADICIONADO
-//NAO ESTA CADASTRANDO OS DADOS AQUI NO KOTLIN
+//A FAZER:
 //FALTA A CRIAÇÃO DOS LINKS
 
 class CadastrarActivity : AppCompatActivity() {
@@ -93,7 +89,6 @@ class CadastrarActivity : AppCompatActivity() {
         return true
     }
 
-    //to usando essa função ou nao?
     private fun entrarLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
@@ -101,45 +96,35 @@ class CadastrarActivity : AppCompatActivity() {
     }
 
     private fun registerUser(user: User) {
-        // Criar um objeto Retrofit
         val retrofit = Retrofit.Builder()
             .baseUrl("https://web-ek0w5pnhkp3k.up-de-fra1-1.apps.run-on-seenode.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        // Criar o serviço da API
         val userService = retrofit.create(UserService::class.java)
 
-        // Fazer a chamada da API para registrar o usuário
         val call = userService.createUser(user)
 
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
-                    // Sucesso ao cadastrar o usuário
                     Toast.makeText(
                         this@CadastrarActivity,
                         "Usuário cadastrado com sucesso",
                         Toast.LENGTH_SHORT
                     ).show()
-                    // Redirecione para a próxima tela ou realize alguma ação
                     val intent = Intent(this@CadastrarActivity, ProfileActivity::class.java)
                     startActivity(intent)
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string()
-                    // Mostrar mensagem de erro específica
                     Toast.makeText(this@CadastrarActivity, "Erro ao cadastrar: $errorBody", Toast.LENGTH_SHORT).show()
-                    // Log do erro para depuração
                     Log.e("ErrorOnResponse", "Erro ao cadastrar: $errorBody")
                 }
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
-                // Tratar falha na requisição
-                Toast.makeText(this@CadastrarActivity, "Falha na requisição", Toast.LENGTH_SHORT)
-                    .show()
-                // Realize ações apropriadas para lidar com a falha
+                Toast.makeText(this@CadastrarActivity, "Falha na requisição", Toast.LENGTH_SHORT).show()
             }
         })
     }
