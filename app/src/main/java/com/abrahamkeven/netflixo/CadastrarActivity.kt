@@ -61,10 +61,10 @@ class CadastrarActivity : AppCompatActivity() {
     }
 
     private fun validateCredentials(): Boolean {
+        val name = nameEditText.text.toString().trim()
         val email = emailEditText.text.toString().trim()
         val password = passwordEditText.text.toString().trim()
         val confirmPassword = confirmPasswordEditText.text.toString().trim()
-        val name = nameEditText.text.toString().trim()
 
         if (name.length <= 1) {
             Toast.makeText(this, "Digite um nome válido", Toast.LENGTH_SHORT).show()
@@ -76,7 +76,7 @@ class CadastrarActivity : AppCompatActivity() {
             return false
         }
 
-        if (password.length < 8) {
+        if (password.length <= 8) {
             Toast.makeText(this, "A senha deve ter pelo menos 8 caracteres", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -92,6 +92,7 @@ class CadastrarActivity : AppCompatActivity() {
         return true
     }
 
+    //to usando essa função ou nao?
     private fun entrarLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
@@ -101,7 +102,7 @@ class CadastrarActivity : AppCompatActivity() {
     private fun registerUser(user: User) {
         // Criar um objeto Retrofit
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://web-ek0w5pnhkp3k.up-de-fra1-1.apps.run-on-seenode.com/")
+            .baseUrl("https://web-ek0w5pnhkp3k.up-de-fra1-1.apps.run-on-seenode.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
