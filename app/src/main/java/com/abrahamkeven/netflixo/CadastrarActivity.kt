@@ -3,6 +3,7 @@ package com.abrahamkeven.netflixo
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
@@ -46,11 +47,11 @@ class CadastrarActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener {
             if (validateCredentials()) {
-                val name = nameEditText.text.toString().trim()
+                val nome = nameEditText.text.toString().trim()
                 val email = emailEditText.text.toString().trim()
-                val password = passwordEditText.text.toString().trim()
+                val senha = passwordEditText.text.toString().trim()
 
-                val user = User(name, email, password)
+                val user = User(nome, email, senha)
                 registerUser(user)
             }
         }
@@ -61,12 +62,12 @@ class CadastrarActivity : AppCompatActivity() {
     }
 
     private fun validateCredentials(): Boolean {
-        val name = nameEditText.text.toString().trim()
+        val nome = nameEditText.text.toString().trim()
         val email = emailEditText.text.toString().trim()
-        val password = passwordEditText.text.toString().trim()
+        val senha = passwordEditText.text.toString().trim()
         val confirmPassword = confirmPasswordEditText.text.toString().trim()
 
-        if (name.length <= 1) {
+        if (nome.length <= 1) {
             Toast.makeText(this, "Digite um nome válido", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -76,12 +77,12 @@ class CadastrarActivity : AppCompatActivity() {
             return false
         }
 
-        if (password.length <= 8) {
+        if (senha.length <= 8) {
             Toast.makeText(this, "A senha deve ter pelo menos 8 caracteres", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if (password != confirmPassword) {
+        if (senha != confirmPassword) {
             Toast.makeText(this, "As senhas não correspondem", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -126,13 +127,11 @@ class CadastrarActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 } else {
-                    // Tratar erro na resposta do servidor
-                    Toast.makeText(
-                        this@CadastrarActivity,
-                        "Erro ao cadastrar o usuário",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    // Realize ações apropriadas para lidar com o erro
+                    val errorBody = response.errorBody()?.string()
+                    // Mostrar mensagem de erro específica
+                    Toast.makeText(this@CadastrarActivity, "Erro ao cadastrar: $errorBody", Toast.LENGTH_SHORT).show()
+                    // Log do erro para depuração
+                    Log.e("ErrorOnResponse", "Erro ao cadastrar: $errorBody")
                 }
             }
 
