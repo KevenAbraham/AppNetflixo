@@ -15,16 +15,6 @@
         android:theme="@style/Theme.Netflixo"
         tools:targetApi="31">
         <activity
-            android:name=".DeleteActivity"
-            android:exported="false"
-            android:label="@string/title_activity_delete"
-            android:theme="@style/Theme.Netflixo" />
-        <activity
-            android:name=".ForgetActivity"
-            android:exported="false"
-            android:label="@string/title_activity_forget"
-            android:theme="@style/Theme.Netflixo" />
-        <activity
             android:name=".ContentActivity"
             android:exported="false"
             android:label="@string/title_activity_content"
@@ -38,11 +28,6 @@
             android:name=".CadastrarActivity"
             android:exported="false"
             android:label="@string/title_activity_cadastrar"
-            android:theme="@style/Theme.Netflixo" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login"
             android:theme="@style/Theme.Netflixo" />
         <activity
             android:name=".MainActivity"
