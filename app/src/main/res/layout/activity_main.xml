@@ -39,7 +39,7 @@
         android:id="@+id/enterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entrar"
+        android:text="Assitir"
         android:background="@color/red"
         android:textColor="@color/white"
         android:layout_marginTop="24dp"/>
@@ -49,9 +49,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="Não perca tempo e crie sua conta agora"
         android:textSize="16sp"
-        android:layout_marginTop="16dp"/>
+        android:text="Gostaria de receber notificações futuras?"
+    android:layout_marginTop="60dp"/>
 
     <Button
         android:id="@+id/signUpButton"
@@ -59,8 +59,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:background="@color/red"
-        android:text="Criar conta agora"
+        android:text="Gostaria!"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="150dp"/>
+        android:layout_marginBottom="80dp"/>
 
 </LinearLayout>

@@ -47,31 +47,31 @@ class ContentActivity : AppCompatActivity() {
         }
 
         val smallImage2 = findViewById<ImageView>(R.id.smallImage2)
-        smallImage1.setOnClickListener {
+        smallImage2.setOnClickListener {
             val videoUrl = "https://www.youtube.com/watch?v=wh-NyCsIUBc&t=1s"
             abrirVideoNoYoutube(videoUrl)
         }
 
         val smallImage3 = findViewById<ImageView>(R.id.smallImage3)
-        smallImage1.setOnClickListener {
+        smallImage3.setOnClickListener {
             val videoUrl = "https://www.youtube.com/watch?v=AwVdngHssto"
             abrirVideoNoYoutube(videoUrl)
         }
 
         val smallImage4 = findViewById<ImageView>(R.id.smallImage4)
-        smallImage1.setOnClickListener {
+        smallImage4.setOnClickListener {
             val videoUrl = "https://www.youtube.com/watch?v=T6aKnvQnWfY"
             abrirVideoNoYoutube(videoUrl)
         }
 
         val smallImage5 = findViewById<ImageView>(R.id.smallImage5)
-        smallImage1.setOnClickListener {
+        smallImage5.setOnClickListener {
             val videoUrl = "https://www.youtube.com/watch?v=kZwH4eXjx3I"
             abrirVideoNoYoutube(videoUrl)
         }
 
         val smallImage6 = findViewById<ImageView>(R.id.smallImage6)
-        smallImage1.setOnClickListener {
+        smallImage6.setOnClickListener {
             val videoUrl = "https://www.youtube.com/watch?v=PQFLHzuag1E"
             abrirVideoNoYoutube(videoUrl)
         }
