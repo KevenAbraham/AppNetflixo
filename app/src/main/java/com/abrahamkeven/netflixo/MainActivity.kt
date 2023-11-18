@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val btnCadastrar = findViewById<Button>(R.id.signUpButton)
 
         btnEntrar.setOnClickListener {
-            entrarLogin()
+            entrarProfile()
         }
 
         btnCadastrar.setOnClickListener {
@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun entrarLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
+    private fun entrarProfile() {
+        val intent = Intent(this, ProfileActivity::class.java)
         startActivity(intent)
         finish()
     }
