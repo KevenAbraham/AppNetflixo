@@ -23,9 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="Cadastrar"
+        android:text="Cadastre-se e receba informações de lançamentos no e-mail."
         android:layout_gravity="start"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:layout_marginTop="50dp"/>
 
     <EditText
@@ -48,25 +48,6 @@
         android:inputType="textEmailAddress"
         android:layout_marginTop="16dp"/>
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
-        android:hint="Senha"
-        android:layout_height="45dp"
-        android:padding="10dp"
-        android:background="@color/cinza_input"
-        android:inputType="textPassword"
-        android:layout_marginTop="16dp"/>
-
-    <EditText
-        android:id="@+id/confirmPasswordEditText"
-        android:layout_width="match_parent"
-        android:hint="Confirmação de senha"
-        android:layout_height="45dp"
-        android:padding="10dp"
-        android:background="@color/cinza_input"
-        android:inputType="textPassword"
-        android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/loginButton"
@@ -76,16 +57,5 @@
         android:textColor="@color/white"
         android:background="@color/red"
         android:layout_marginTop="24dp"/>
-
-    <TextView
-        android:id="@+id/haveAnAccountTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="Já tenho uma conta"
-        android:textSize="16sp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="end"
-        android:layout_marginBottom="20dp"/>
 
 </LinearLayout>

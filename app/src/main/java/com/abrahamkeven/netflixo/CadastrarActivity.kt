@@ -1,17 +1,14 @@
 package com.abrahamkeven.netflixo
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.abrahamkeven.netflixo.api.UserService
 import com.abrahamkeven.netflixo.model.User
 import retrofit2.Call
@@ -20,14 +17,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//A FAZER:
-//FALTA A CRIAÇÃO DOS LINKS
-
 class CadastrarActivity : AppCompatActivity() {
     private lateinit var nameEditText: EditText //nome
     private lateinit var emailEditText: EditText //email
-    private lateinit var passwordEditText: EditText //senha
-    private lateinit var confirmPasswordEditText: EditText //confirmação
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,33 +27,30 @@ class CadastrarActivity : AppCompatActivity() {
 
         nameEditText = findViewById(R.id.nameEditText)
         emailEditText = findViewById(R.id.emailEditText)
-        passwordEditText = findViewById(R.id.passwordEditText)
-        confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText)
 
-        val linkToLogin = findViewById<TextView>(R.id.haveAnAccountTextView)
         val loginButton = findViewById<Button>(R.id.loginButton)
+        val imgLogo = findViewById<ImageView>(R.id.logoImageView)
 
-        loginButton.setOnClickListener {
+        imgLogo.setOnClickListener {
+            val intent = Intent(this@CadastrarActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        loginButton.setOnClickListener { //Registering the name and the e-mail adress in the database.
             if (validateCredentials()) {
                 val nome = nameEditText.text.toString().trim()
                 val email = emailEditText.text.toString().trim()
-                val senha = passwordEditText.text.toString().trim()
 
-                val user = User(nome, email, senha)
+                val user = User(nome, email)
                 registerUser(user)
             }
-        }
-
-        linkToLogin.setOnClickListener {
-            entrarLogin()
         }
     }
 
     private fun validateCredentials(): Boolean {
         val nome = nameEditText.text.toString().trim()
         val email = emailEditText.text.toString().trim()
-        val senha = passwordEditText.text.toString().trim()
-        val confirmPassword = confirmPasswordEditText.text.toString().trim()
 
         if (nome.length <= 1) {
             Toast.makeText(this, "Digite um nome válido", Toast.LENGTH_SHORT).show()
@@ -73,24 +62,14 @@ class CadastrarActivity : AppCompatActivity() {
             return false
         }
 
-        if (senha.length <= 8) {
-            Toast.makeText(this, "A senha deve ter pelo menos 8 caracteres", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        if (senha != confirmPassword) {
-            Toast.makeText(this, "As senhas não correspondem", Toast.LENGTH_SHORT).show()
-            return false
-        }
-
-        //val firstName = name.split(" ")[0] //armazenando o primeiro nome do usuário na variável
+        //val firstName = nome.split(" ")[0] //armazenando o primeiro nome do usuário na variável
         //Toast.makeText(this, "Primeiro nome: $firstName", Toast.LENGTH_SHORT).show()
 
         return true
     }
 
-    private fun entrarLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
+    private fun retornarMain() {
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -110,7 +89,7 @@ class CadastrarActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     Toast.makeText(
                         this@CadastrarActivity,
-                        "Usuário cadastrado com sucesso",
+                        "Você receberá notificações sobre futuros lançamentos.",
                         Toast.LENGTH_SHORT
                     ).show()
                     val intent = Intent(this@CadastrarActivity, ProfileActivity::class.java)
@@ -118,7 +97,7 @@ class CadastrarActivity : AppCompatActivity() {
                     finish()
                 } else {
                     val errorBody = response.errorBody()?.string()
-                    Toast.makeText(this@CadastrarActivity, "Erro ao cadastrar: $errorBody", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CadastrarActivity, "Email já cadastrado, escolha outro.", Toast.LENGTH_SHORT).show()
                     Log.e("ErrorOnResponse", "Erro ao cadastrar: $errorBody")
                 }
             }
