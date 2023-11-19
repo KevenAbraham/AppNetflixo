@@ -1,5 +1,13 @@
 package com.abrahamkeven.netflixo
 
+/*
+****************************************************************
+            FUNÇÃO DE CADASTRO ESTÁ FUNCIONANDO
+Os dados estão sendo cadastrados no banco de dados corretamente
+                   e conforme esperado!
+****************************************************************
+*/
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -61,9 +69,6 @@ class CadastrarActivity : AppCompatActivity() {
             Toast.makeText(this, "Insira um email válido", Toast.LENGTH_SHORT).show()
             return false
         }
-
-        //val firstName = nome.split(" ")[0] //armazenando o primeiro nome do usuário na variável
-        //Toast.makeText(this, "Primeiro nome: $firstName", Toast.LENGTH_SHORT).show()
 
         return true
     }
