@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">netflixo</string>
+    <string name="app_name">Netflixo</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_cadastrar">CadastrarActivity</string>
     <string name="title_activity_profile">ProfileActivity</string>
